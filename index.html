@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى ثروتي الغالية ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700;900&display=swap');
+
+        :root {
+            --pink-dark: #ff4d6d;
+            --pink-main: #ff758f;
+            --pink-light: #ffccd5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            background: #fff0f3; 
+            font-family: 'Cairo', sans-serif;
+            text-align: center; 
+            color: #590d22;
+            overflow-x: hidden;
+        }
+
+        /* أنيميشن الوميض للزراير */
+        @keyframes glow-btn {
+            0% { box-shadow: 0 0 5px var(--pink-main); transform: scale(1); }
+            50% { box-shadow: 0 0 20px var(--pink-dark); transform: scale(1.05); }
+            100% { box-shadow: 0 0 5px var(--pink-main); transform: scale(1); }
+        }
+
+        .glow-btn {
+            animation: glow-btn 1.5s infinite ease-in-out;
+            cursor: pointer;
+            border: none;
+            font-weight: 900;
+        }
+
+        /* الافتتاحية */
+        #gatekeeper {
+            position: fixed; inset: 0; background: white; z-index: 10000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+
+        .btn-big {
+            padding: 20px 40px; font-size: 1.8rem; border-radius: 50px;
+            background: var(--pink-dark); color: white;
+        }
+
+        .options-wrap { display: flex; gap: 20px; margin-top: 30px; position: relative; width: 300px; justify-content: center; }
+        .opt-btn { padding: 10px 30px; border-radius: 20px; border: none; font-weight: bold; }
+        #no-btn { position: absolute; background: #ccc; transition: 0.2s; cursor: pointer; }
+        #yes-btn { background: #4CAF50; color: white; cursor: pointer; }
+
+        /* المحتوى الرئيسي */
+        #app { display: none; padding: 40px 20px; }
+
+        /* الدباديب */
+        .bears-stage { position: relative; height: 250px; width: 100%; display: flex; align-items: center; justify-content: center; margin: 40px 0; }
+        .bear { font-size: 5rem; position: absolute; transition: all 1s ease-in-out; }
+        #bear-m { right: 15%; transform: scaleX(-1); }
+        #bear-f { left: 15%; filter: grayscale(1); }
+        .bubble { 
+            position: absolute; background: white; padding: 10px 20px; border-radius: 20px; 
+            font-size: 0.9rem; font-weight: bold; bottom: 80%; display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: max-content; z-index: 20;
+        }
+
+        /* ألبوم الصور - الترتيب الدقيق */
+        .oval-badge {
+            display: inline-block; padding: 15px 30px; border-radius: 50px; background: white;
+            border: 3px solid var(--pink-dark); margin: 40px 0; font-weight: bold;
+            animation: glow-btn 1s infinite alternate;
+        }
+        
+        .photo-gallery { display: flex; flex-direction: column; align-items: center; gap: 60px; }
+        .photo-item { 
+            opacity: 0; transform: translateY(50px); transition: 1s; 
+            width: 90%; max-width: 450px; 
+        }
+        .photo-item.show { opacity: 1; transform: translateY(0); animation: pulseImage 2s infinite alternate; }
+        @keyframes pulseImage { from { filter: brightness(1); } to { filter: brightness(1.1) drop-shadow(0 0 15px var(--pink-light)); } }
+        .photo-item img { width: 100%; border-radius: 20px; border: 8px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .caption { margin-top: 20px; font-weight: 900; font-size: 1.3rem; color: var(--pink-dark); }
+
+        /* الكروت */
+        .card { 
+            width: 140px; height: 180px; background: white; 
+            border: 3px solid var(--pink-dark); border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; font-weight: 900; font-size: 2.5rem;
+            animation: glow-btn 2s infinite ease-in-out;
+        }
+        .card-content { 
+            position: absolute; inset: 0; background: var(--pink-light); 
+            display: none; align-items: center; justify-content: center; 
+            font-size: 1.1rem; padding: 15px; font-weight: bold; border-radius: 12px;
+        }
+
+        /* الرسالة النهائية */
+        .envelope-box { 
+            background: #fff; border: 4px solid var(--pink-dark); border-radius: 20px;
+            padding: 40px 20px; margin: 50px auto; max-width: 550px;
+        }
+        #letter-body { display: none; font-family: 'Amiri', serif; font-size: 1.5rem; line-height: 2.2; padding: 25px; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div id="gatekeeper">
+        <button class="btn-big glow-btn">مستعدة تسامحيني🥺</button>
+        <div class="options-wrap">
+            <button id="yes-btn" class="opt-btn glow-btn" onclick="startApp()">اه</button>
+            <button id="no-btn" class="opt-btn" onmouseover="moveNo()">لا</button>
+        </div>
+    </div>
+
+    <div id="app">
+        <p style="font-size: 1.4rem; line-height: 2; margin-bottom: 40px; padding: 0 15px;">
+            شوفي يا حبيبتي يا روحي، انا مهما اعمل انتي عارفه قد ايه انا بحبك، فخلينا ننسى اي حاجه وافتكريلي كل حاجه حلوة♡🥹، مش ده كلامك ياروحي؟ 🥺💗 وايه فايدته الزعل واحنا ملناش غير بعض في الاخر، وفي الاول برضو 😂💗، انتي بتاعتي انا بس اصلا🌝😘
+        </p>
+
+        <h3>شايفه الدبين دول؟ هتخليهم يتصالحو دلوقتي</h3>
+        <button id="drama-btn" class="oval-badge glow-btn" onclick="nextStep()">اتصالحو🤧❤️‍🩹</button>
+
+        <div class="bears-stage">
+            <div id="bubble-m" class="bubble"></div>
+            <div id="bubble-f" class="bubble"></div>
+            <div id="bear-m" class="bear">🧸</div>
+            <div id="bear-f" class="bear">🧸</div>
+        </div>
+        <h4 id="bear-status" style="height: 30px; color: var(--pink-dark); font-weight: 900;"></h4>
+
+        <div class="oval-badge glow-btn">ذكرياتنا اللي محفورة في قلبي🥺</div>
+
+        <div class="photo-gallery">
+            <div class="photo-item"><img src="photo1.jpg"><div class="caption">من اول صوري مع القمر🥹♥</div></div>
+            <div class="photo-item"><img src="photo2.jpg"><div class="caption">المكان ده يشهد علينا🌝</div></div>
+            <div class="photo-item"><img src="photo3.jpg"><div class="caption">انا وحتة البسكوتاية بتاعتي🤤</div></div>
+            <div class="photo-item"><img src="photo4.jpg"><div class="caption">الرابط ده لازم يفضل موجود 🧬🔗</div></div>
+            <div class="photo-item"><img src="photo5.jpg"><div class="caption">مهو يا ترضي يا ترضي😂♥</div></div>
+            <div class="photo-item"><img src="photo6.jpg"><div class="caption">الملكة وربنا قمر 🥺 بحبك🥹♥</div></div>
+        </div>
+
+        <div style="margin: 80px 0;">
+            <h3 style="margin-bottom: 20px;">لما تبقي زعلانه مني تحبي اصالحك ازاي؟ 😏</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <div class="card" onclick="flip(this)">1<div class="card-content">أخرجك وناكل برة♥</div></div>
+                <div class="card" onclick="flip(this)">2<div class="card-content">اجبلك لب ونقعد ننقنق فيه انا وانتِ؟</div></div>
+                <div class="card" onclick="flip(this)">3<div class="card-content">افضل اقولك كلام حلو لحد ماتهدي🥺</div></div>
+                <div class="card" onclick="flip(this)">4<div class="card-content">اسيبك لوحدك! اللي هو انا معاكي برضو 🥹</div></div>
+            </div>
+        </div>
+
+        <div class="envelope-box">
+            <h3 style="color: var(--pink-dark);">قلبي باعتلك دي🥺🫀</h3>
+            <button class="oval-badge glow-btn" id="open-btn" onclick="openLetter()">افتح يا قلبه</button>
+            <div id="letter-body"></div>
+            <button class="glow-btn" id="close-btn" style="display:none; padding: 15px 40px; background: var(--pink-dark); color: white; border-radius: 50px; margin-top: 20px;" onclick="location.reload()">إغلاق ❤️</button>
+        </div>
+
+        <audio id="music" src="music.mp3" loop></audio>
+    </div>
+
+    <script>
+        // هروب زرار "لا"
+        function moveNo() {
+            const btn = document.getElementById('no-btn');
+            const x = (Math.random() - 0.5) * 300;
+            const y = (Math.random() - 0.5) * 200;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function startApp() {
+            document.getElementById('gatekeeper').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+            document.getElementById('music').play().catch(() => {});
+            initScroll();
+        }
+
+        // دراما الدباديب (5 مراحل)
+        let step = 0;
+        function nextStep() {
+            step++;
+            const bm = document.getElementById('bear-m');
+            const bf = document.getElementById('bear-f');
+            const bubM = document.getElementById('bubble-m');
+            const bubF = document.getElementById('bubble-f');
+            const status = document.getElementById('bear-status');
+
+            if(step == 1) {
+                bm.style.right = '35%';
+                bubM.innerText = "انا اسف🥺"; bubM.style.display = 'block'; bubM.style.right = '35%';
+            } else if(step == 2) {
+                bubM.style.display = 'none';
+                bubF.innerText = "طيب😒"; bubF.style.display = 'block'; bubF.style.left = '15%';
+            } else if(step == 3) {
+                bubF.style.display = 'none';
+                bubM.innerText = "سامحيني يادبدوبتي🥺❤️‍🩹"; bubM.style.display = 'block';
+            } else if(step == 4) {
+                bubM.style.display = 'none';
+                bubF.innerText = "متزعلنيش تاني🥺"; bubF.style.display = 'block'; bubF.style.left = '35%';
+                bf.style.left = '35%';
+            } else if(step == 5) {
+                bubF.style.display = 'none';
+                bubM.innerText = "مش هزعلك تاني ياروحي انتي🥹❤️‍🩹"; bubM.style.display = 'block';
+                setTimeout(() => {
+                    bm.style.right = '45%'; bf.style.left = '45%';
+                    bm.innerText = "🫂"; bf.style.display = "none";
+                    bf.style.filter = "grayscale(0)";
+                    status.innerText = "خلاص اتصالحو ياروحي زيي انا وانتي🙈💗";
+                    bubM.style.display = 'none';
+                    spawnHearts();
+                }, 1500);
+            }
+        }
+
+        function spawnHearts() {
+            for(let i=0; i<15; i++) {
+                const h = document.createElement('div');
+                h.innerText = Math.random() > 0.5 ? '💋' : '💗';
+                h.style.position = 'fixed';
+                h.style.left = Math.random()*100+'vw';
+                h.style.top = '100vh';
+                h.style.fontSize = '2.5rem';
+                h.animate([{transform: 'translateY(0)'}, {transform: 'translateY(-120vh)'}], {duration: 2000, fill: 'forwards'});
+                document.body.appendChild(h);
+            }
+        }
+
+        // تفعيل ظهور الصور عند السكرول
+        function initScroll() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+            }, { threshold: 0.3 });
+            document.querySelectorAll('.photo-item').forEach(p => observer.observe(p));
+        }
+
+        function flip(card) {
+            card.style.animation = "none";
+            card.style.transform = "rotateY(360deg)";
+            setTimeout(() => {
+                card.querySelector('.card-content').style.display = 'flex';
+                card.style.background = 'white';
+            }, 300);
+        }
+
+        // تأثير الآلة الكاتبة للرسالة النهائية
+        const text = "إلى ثروتي\nانا قلب طه اللي بيحبك وبيعشقك ودايب فيكي انتي نبضي اللي عايش بيه، من غيرك اموت ياروحي 🥺🫀 هنفضل دايما سوا عالحلوة والمره، ومعاكي انا هكون مرتاح ومش هزعل ولا هنشوف مر 🥺 انتي شرياني والدم اللي ماشي في عروقي بيقول بحبك يا ثروة 😭♥💗 ربنا يخليكي ليا وميحرمنيش منك ابدا ياروح قلبي انتي ودايما جمبي ومطمناني يا حبيبتي، بحبك من كل قلبي🥹🫀";
+        function openLetter() {
+            document.getElementById('open-btn').style.display = 'none';
+            const body = document.getElementById('letter-body');
+            body.style.display = 'block';
+            let i = 0;
+            const timer = setInterval(() => {
+                body.innerHTML += text[i] === '\n' ? '<br>' : text[i];
+                i++;
+                if(i >= text.length) {
+                    clearInterval(timer);
+                    document.getElementById('close-btn').style.display = 'inline-block';
+                }
+            }, 50);
+        }
+    </script>
+</body>
+</html>
+
